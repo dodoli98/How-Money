@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>How Money?</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="header">
+            <h1>
+                How Money?
+            </h1>
+        </div>
+
+        <!-- main -->
+        <div class="mainWrapper">
+
+           
+            <!-- formArea -->
+            <div class="formArea">
+                <form id="inputForm">
+                    <input type="date" id="date" name="date">
+
+                    <select id="type" name="type" > 
+                        <option value="" disabled selected hidden>유형</option>
+                        <option value="expense">지출</option>
+                        <option value="income">수입</option>
+                    </select> <br>
+                
+                    <input type="text" id="detail" name="detail" placeholder="내용을 입력하세요">
+                
+                    <input type="number" id="amount" name="amount" placeholder="금액을 입력하세요">
+                
+                    <input type="submit" value="등록">
+                </form>
+            </div>
+
+             <!-- calendar -->
+             <div class="calendar">
+
+
+             </div>
+     
+        
+        </div> <!-- #mainWrapper -->
+
+        
+
+        
+
+        <!-- side -->
+        <aside class="sidebar">
+            <p>Upcoming Schedule</p>
+        </aside>
+
+    </div> <!-- container -->
+
+
+</body>
+
+</html>
+
+<!--
+    가계부 웹 페이지  
+
+    기본 요구사항  
+    총지출과 총수입 표시
+    inputArea - 각해당하는 날짜에 지출인지 수입인지, 내용, 금액을 입력
+
+    inputArea의 내용은 calendar 영역에 추가되고, 내용은 해당 날짜를 클릭해야 보이도록 할것.
+
+
+    sidebar - 고민
+
+
+ -->

@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'seolleimcool-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+/* ------------------- header ------------------- */
+.header {
+    text-align: center;
+    font-family: 'seolleimcool-SemiBold';
+
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.header > h1 {
+    font-size: 3em;
+}
+
+/* ------------------- main ------------------- */
+
+.mainWrapper {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    height: 75vh;
+    
+}
+
+.calendar {
+    background-color: lightblue;
+
+    height: 75%;
+    border-radius: 50px;
+    box-sizing: border-box;
+
+}
+
+
+.formArea {
+    background-color: lightblue;
+    border-radius: 50px;
+    box-sizing: border-box;
+
+    height: 15%;
+
+
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+
+    position: relative;
+
+}
+
+/* ------------------- form ------------------- */
+#inputForm {
+    
+
+}
+
+#inputForm > * {
+    padding: 0 1em;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background-color: transparent;
+}
+
+#inputForm > input[type="submit"] {
+    height: 40px;
+    width: 80px;
+    color: #fff;
+    background-color: #6A24FE;
+
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+
+/* ------------------- sidebar ------------------- */
+
+.sidebar{
+    display: none;
+}
+
+
+/* 스마트폰 */
+@media all and (max-width:767px) {
+    .container {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "header"
+            "main";
+    }
+
+    .sidebar {
+        display: none;
+        background-color: #f0f0f0;
+    }
+
+}
+
+
+/*테블릿 */
+@media all and (min-width:768px) and (max-width:1023px) {
+  
+}
+
+/* 노트북 이상 */
+@media only screen and (min-width: 1024px) {
+    .header{
+        height: 15vh;
+    }
+}
+
