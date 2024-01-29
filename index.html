@@ -7,10 +7,29 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>How Money?</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script src="main.js"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- theme button -->
+        <!--
+             다크모드와 라이트모드 
+             스위치 모양으로 디자인해서 
+             전원스위치를 누르는 모션
+             딸까 느낌?
+
+        
+        -->
+
+        <label class="switch">
+            <input type="checkbox" id="togglebtn">
+            <span class="slider"></span>
+        </label>
+
+
         <!-- header -->
         <div class="header">
             <h1>
@@ -21,38 +40,53 @@
         <!-- main -->
         <div class="mainWrapper">
 
-           
+
+
+
+            <!-- calendar -->
+            <div class="calendar">
+
+
+            </div>
+
+
             <!-- formArea -->
             <div class="formArea">
                 <form id="inputForm">
-                    <input type="date" id="date" name="date">
 
-                    <select id="type" name="type" > 
-                        <option value="" disabled selected hidden>유형</option>
-                        <option value="expense">지출</option>
-                        <option value="income">수입</option>
-                    </select> <br>
-                
-                    <input type="text" id="detail" name="detail" placeholder="내용을 입력하세요">
-                
-                    <input type="number" id="amount" name="amount" placeholder="금액을 입력하세요">
-                
-                    <input type="submit" value="등록">
+                    <label class="formLabel">
+                        날짜
+                        <input type="date" id="date" name="date">
+                    </label>
+
+                    <label class="formLabel">
+                        유형
+                        <select id="type" name="type">
+                            <option value="expense">지출</option>
+                            <option value="income">수입</option>
+                        </select>
+                    </label>
+
+                    <label class="formLabel">
+                        내용
+                        <input type="text" id="detail" name="detail">
+                    </label>
+
+                    <label class="formLabel">
+                        금액
+                        <input type="number" id="amount" name="amount">
+                    </label>
+
+                    <input type="submit" value="등록" class="register-btn">
                 </form>
             </div>
 
-             <!-- calendar -->
-             <div class="calendar">
 
-
-             </div>
-     
-        
         </div> <!-- #mainWrapper -->
 
-        
 
-        
+
+
 
         <!-- side -->
         <aside class="sidebar">

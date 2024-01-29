@@ -5,10 +5,85 @@
     font-style: normal;
 }
 
+@keyframes jelly {
+    25% {
+        transform: scale(0.9, 1.1) translateX(-50%);
+    }
+
+    50% {
+        transform: scale(1.1, 0.9) translateX(-50%);
+    }
+
+    75% {
+        transform: scale(0.95, 1.05) translateX(-50%);
+    }
+}
+
+body {
+    transition: background-color 1s; 
+}
+
+/* ------------------- container ------------------- */
+
 .container {
     width: 70%;
     margin: 0 auto;
 }
+
+.switch {
+    position: absolute;
+    display: inline-block;
+
+    bottom: 5%;
+    right: 3%;
+
+    width: 70px;
+    height: 34px;
+
+}
+
+.switch input {
+    appearance: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+
+}
+
+/* 
+input:checked+.slider {
+    background-color: ;
+} */
+
+
+input:checked+.slider:before {
+    transform: translateX(34px);
+}
+
 
 
 /* ------------------- header ------------------- */
@@ -17,11 +92,13 @@
     font-family: 'seolleimcool-SemiBold';
 
     display: flex;
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center;
+    /* 수평 가운데 정렬 */
+    align-items: center;
+    /* 수직 가운데 정렬 */
 }
 
-.header > h1 {
+.header>h1 {
     font-size: 3em;
 }
 
@@ -29,18 +106,19 @@
 
 .mainWrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     justify-content: space-between;
 
     height: 75vh;
-    
+
 }
 
 .calendar {
     background-color: lightblue;
 
-    height: 75%;
+    width: 70%;
+
     border-radius: 50px;
     box-sizing: border-box;
 
@@ -52,47 +130,84 @@
     border-radius: 50px;
     box-sizing: border-box;
 
-    height: 15%;
-
+    width: 25%;
 
     display: flex;
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center;
+    /* 수평 가운데 정렬 */
+    align-items: center;
+    /* 수직 가운데 정렬 */
 
     position: relative;
 
+    padding: 1em;
 }
 
 /* ------------------- form ------------------- */
 #inputForm {
-    
+    height: 70%;
 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    text-align: center;
 }
 
-#inputForm > * {
-    padding: 0 1em;
-    box-sizing: border-box;
-    border-radius: 6px;
+.formLabel {
+    line-height: 1.4em;
+    font-size: 0.8em;
+
+    color: gray;
+}
+
+.formLabel>* {
+    text-align: center;
+    font-size: 1.4em;
+    border: none;
+    /* 위쪽 테두리 제거 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
     background-color: transparent;
+    width: 100%;
 }
 
-#inputForm > input[type="submit"] {
+
+
+#detail,
+#amount {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+}
+
+
+.register-btn {
+
     height: 40px;
     width: 80px;
     color: #fff;
     background-color: #6A24FE;
+    border-radius: 15px;
+
+    cursor: pointer;
+    overflow: visible;
+
 
     position: absolute;
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    cursor: pointer;
+}
+
+.register-btn:hover {
+    animation: jelly 0.5s;
 }
 
 
 /* ------------------- sidebar ------------------- */
 
-.sidebar{
+.sidebar {
     display: none;
 }
 
@@ -116,14 +231,22 @@
 
 
 /*테블릿 */
-@media all and (min-width:768px) and (max-width:1023px) {
-  
-}
+@media all and (min-width:768px) and (max-width:1023px) {}
 
 /* 노트북 이상 */
 @media only screen and (min-width: 1024px) {
-    .header{
+    .header {
         height: 15vh;
     }
-}
 
+    #switch {
+        position: absolute;
+        right: 3%;
+        bottom: 5%;
+
+
+
+    }
+
+
+}
