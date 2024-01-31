@@ -114,7 +114,7 @@ input:checked+.slider:before {
 
 }
 
-.calendar {
+.calendarWrapper {
     background-color: lightblue;
 
     width: 70%;
