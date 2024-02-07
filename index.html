@@ -31,30 +31,50 @@
 
 
         <!-- header -->
-        <div class="header">
+        <header class="header">
             <h1>
                 How Money?
             </h1>
-        </div>
+        </header>
 
         <!-- main -->
-        <div class="mainWrapper">
-
+        <main class="mainWrapper">
 
 
             <div class="calendarWrapper">
+
+                <div class="calendar-header">
+                    <button id="prevMonth">&lt;</button>
+                    <h2 id="currentMonth"></h2>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+
                 <!-- calendar -->
                 <div class="calendar">
 
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>일</th>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                                <th>토</th>
+                              </tr>
+                        </thead>
+                        <tbody id="calendarBody">
+                            
+                        </tbody>
+                    </table>
 
                 </div>
-
-                <button id="prevMonth">Previous Month</button>
-                <button id="nextMonth">Next Month</button>
             </div>
 
 
-            
+
+
             <!-- formArea -->
             <div class="formArea">
                 <form id="inputForm">
@@ -87,7 +107,7 @@
             </div>
 
 
-        </div> <!-- #mainWrapper -->
+        </main> <!-- #mainWrapper -->
 
 
 

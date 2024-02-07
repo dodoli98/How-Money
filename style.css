@@ -5,6 +5,14 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 @keyframes jelly {
     25% {
         transform: scale(0.9, 1.1) translateX(-50%);
@@ -142,6 +150,77 @@ input:checked+.slider:before {
 
     padding: 1em;
 }
+
+/* ------------------- calendar ------------------- */
+.calendar-header {
+    height: 15%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+#currentMonth {
+    width: 40%;
+    font-size: 1.7em;
+    margin: 0 1em;
+
+    font-family: 'omyu_pretty';
+    /* font-family: 'seolleimcool-SemiBold'; */
+
+}
+
+#prevMonth, #nextMonth {
+    all: unset; 
+
+    font-size: 1.7em;
+    background-color: transparent;
+    border: none;
+
+
+    cursor: pointer;
+
+}
+
+
+.calendar {
+    height: 85%;    
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+table {
+    height: 100%;
+    width: 100%;
+}
+
+/* calendar-header를 flexbox로 설정하여 요소를 가로로 나열합니다. */
+thead > tr {
+    display: flex;
+    justify-content: space-between; /* 각 요소를 좌우로 최대한 펼쳐서 배치합니다. */
+    align-items: center; /* 요소를 수직으로 가운데로 정렬합니다. */
+    text-align: center;
+
+}
+
+.calendar th {
+    width: calc(100% / 7); /* 요일이 7개이므로 100%를 7등분하여 각각의 너비를 계산합니다. */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------- form ------------------- */
 #inputForm {

@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    // toggle button ------------------------------------------------------------
+
     const $toggle = $('#togglebtn');
     const $body = $('body');
     const $logo = $('.header > h1');
@@ -18,7 +21,7 @@ $(document).ready(function() {
         }
     });
 
-    // 달력 만들기 ------------------------------------------------------------
+    // calendar ------------------------------------------------------------
 
     // 현재 날짜 가져오기
     var currentDate = new Date();
@@ -51,13 +54,16 @@ $(document).ready(function() {
     });
 });
 
+
+
+
 // 캘린더 표시 함수
 function displayCalendar(year, month) {
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var monthDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
     // 헤더 업데이트
-    $('.calendar').html('<h2>' + monthNames[month] + ' ' + year + '</h2>');
+    $('#currentMonth').html('<h2>' + monthNames[month] + ' ' + year + '</h2>');
     
     // 날짜 표시
     var firstDay = new Date(year, month, 1).getDay();
@@ -65,9 +71,9 @@ function displayCalendar(year, month) {
     
     var table = '<table>';
     table += '<tr>';
-    for (var i = 0; i < monthDays.length; i++) {
-        table += '<th>' + monthDays[i] + '</th>';
-    }
+    // for (var i = 0; i < monthDays.length; i++) {
+    //     table += '<th>' + monthDays[i] + '</th>';
+    // }
     table += '</tr><tr>';
     
     var dayCount = 1;
@@ -90,5 +96,5 @@ function displayCalendar(year, month) {
     }
     table += '</tr></table>';
     
-    $('.calendar').append(table);
+    $('#calendarBody').append(table);
 }

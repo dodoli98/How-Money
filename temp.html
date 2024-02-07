@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .current-month {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1 class="current-month"></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>일</th>
+      <th>월</th>
+      <th>화</th>
+      <th>수</th>
+      <th>목</th>
+      <th>금</th>
+      <th>토</th>
+    </tr>
+  </thead>
+  <tbody id="calendar-body">
+    <!-- Calendar days will be inserted here -->
+  </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Get current date
+    var currentDate = new Date();
+
+    // Display current month and year
+    var currentMonth = currentDate.toLocaleString('en-US', { month: 'long' });
+    var currentYear = currentDate.getFullYear();
+    $('.current-month').text(currentMonth + ' ' + currentYear);
+
+    // Get the number of days in the current month
+    var numberOfDays = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+    // Get the first day of the month
+    var firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+
+    // Create a table row to hold the calendar days
+    var calendarRow = $('<tr></tr>');
+
+    // Fill in the empty cells before the first day of the month
+    for (var i = 0; i < firstDayOfMonth; i++) {
+      calendarRow.append('<td></td>');
+    }
+
+    // Fill in the days of the month
+    for (var i = 1; i <= numberOfDays; i++) {
+      // Append each day to the calendar row
+      calendarRow.append('<td>' + i + '</td>');
+
+      // If it's the last day of the week, start a new row
+      if ((firstDayOfMonth + i - 1) % 7 == 0) {
+        $('#calendar-body').append(calendarRow);
+        calendarRow = $('<tr></tr>'); // Start a new row
+      }
+    }
+
+    // Fill in any remaining empty cells at the end of the month
+    while (calendarRow.children().length < 7) {
+      calendarRow.append('<td></td>');
+    }
+
+    // Append the last row to the calendar body
+    $('#calendar-body').append(calendarRow);
+  });
+</script>
+
+</body>
+</html>
