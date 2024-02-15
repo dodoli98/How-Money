@@ -1,5 +1,31 @@
 $(document).ready(function() {
-
+ 
+    // drop down ------------------------------------------------------------
+    
+    $(function () {
+        const selectedItem = $('.selected-item');
+        const dropdownList = $('.dropdown-list');
+    
+        selectedItem.on('click', function () {
+            dropdownList.slideToggle(); // slideToggle 메서드를 사용하여 드롭다운을 부드럽게 열고 닫습니다.
+        });
+    
+        dropdownList.on('click', 'li', function (event) {
+            selectedItem.removeClass('formLabel');
+            selectedItem.text($(this).text());
+            dropdownList.slideUp(); // 아이템을 클릭하면 드롭다운을 닫습니다.
+        });
+    
+        $(document).on('click', function (event) {
+            if (!selectedItem.is(event.target) && !dropdownList.has(event.target).length) {
+                dropdownList.slideUp(); // 문서 어디를 클릭하든 드롭다운을 닫습니다.
+            }
+        });
+    });
+    
+    
+    
+    
     // toggle button ------------------------------------------------------------
 
     const $toggle = $('#togglebtn');
@@ -54,16 +80,23 @@ $(document).ready(function() {
     });
 });
 
+// 캘린더 
+function displayCalendar(year, month) {
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    // 현재 달을 입력 
+    $('#currentMonth').text(monthNames[month] + ' ' + year );
+
+}
 
 
-
+/*
 // 캘린더 표시 함수
 function displayCalendar(year, month) {
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    var monthDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
     // 헤더 업데이트
-    $('#currentMonth').html('<h2>' + monthNames[month] + ' ' + year + '</h2>');
+    $('#currentMonthentMonth').html('<h2>' + monthNames[month] + ' ' + year + '</h2>');
     
     // 날짜 표시
     var firstDay = new Date(year, month, 1).getDay();
@@ -98,3 +131,6 @@ function displayCalendar(year, month) {
     
     $('#calendarBody').append(table);
 }
+
+
+*/

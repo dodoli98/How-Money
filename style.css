@@ -119,6 +119,7 @@ input:checked+.slider:before {
     justify-content: space-between;
 
     height: 75vh;
+    
 
 }
 
@@ -140,15 +141,16 @@ input:checked+.slider:before {
 
     width: 25%;
 
+    
     display: flex;
-    justify-content: center;
-    /* 수평 가운데 정렬 */
+    flex-direction: column;
+    justify-content: space-between; /* 각 요소를 좌우로 최대한 펼쳐서 배치합니다. */
+
     align-items: center;
-    /* 수직 가운데 정렬 */
 
     position: relative;
 
-    padding: 1em;
+    padding: 4em 1em;
 }
 
 /* ------------------- calendar ------------------- */
@@ -203,6 +205,9 @@ thead > tr {
     align-items: center; /* 요소를 수직으로 가운데로 정렬합니다. */
     text-align: center;
 
+    font-family: 'omyu_pretty';
+
+
 }
 
 .calendar th {
@@ -214,17 +219,46 @@ thead > tr {
 
 
 
-
-
-
-
-
-
-
-
 /* ------------------- form ------------------- */
+
+
+#finaceWrapper {
+    height: 25%;
+
+    width: 100%;
+    border-radius: 25px;
+
+    padding: 1em 2em;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    text-align: right;
+
+    font-family: 'omyu_pretty';
+
+    background-color: rgba(255, 255, 255, 0.15); 
+
+
+}
+
+#finaceWrapper > p:not(:first-child) {
+    display: flex;
+    justify-content: space-between; /* 각 요소를 좌우로 최대한 펼쳐서 배치합니다. */
+}
+
+#finaceWrapper > p:last-child {
+    margin-top: 0.5em;
+    border-top: 1px solid lightgray;
+    padding-top: 0.5em;
+}
+
+
 #inputForm {
-    height: 70%;
+    height: 60%;
 
 
     display: flex;
@@ -232,6 +266,13 @@ thead > tr {
     justify-content: space-between;
 
     text-align: center;
+
+
+    font-family: 'omyu_pretty';
+
+    
+
+
 }
 
 .formLabel {
@@ -250,6 +291,7 @@ thead > tr {
 
     background-color: transparent;
     width: 100%;
+
 }
 
 
@@ -282,6 +324,37 @@ thead > tr {
 .register-btn:hover {
     animation: jelly 0.5s;
 }
+
+
+/* 드롭다운  */
+.custom-dropdown {
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .selected-item {
+    cursor: pointer;
+  }
+
+  .dropdown-list {
+    display: none;
+    margin-top: 0.5em;
+    background-color: transparent;
+    list-style: none;
+    padding: 0;
+
+  }
+
+  .dropdown-list li {
+    padding: 10px;
+  }
+
+  .dropdown-list li:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3); 
+  }
+
 
 
 /* ------------------- sidebar ------------------- */

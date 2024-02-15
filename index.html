@@ -55,56 +55,65 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>일</th>
-                                <th>월</th>
-                                <th>화</th>
-                                <th>수</th>
-                                <th>목</th>
-                                <th>금</th>
-                                <th>토</th>
-                              </tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
                         </thead>
                         <tbody id="calendarBody">
-                            
+
                         </tbody>
                     </table>
 
                 </div>
-            </div>
+            </div> <!-- .calendarWrapper -->
 
+            
 
 
 
             <!-- formArea -->
             <div class="formArea">
-                <form id="inputForm">
 
+                <div id="finaceWrapper">
+                    <p>10000</p>
+                    <p><span>-</span> 5000</p>
+                    <p><span>=</span> 5000</p>
+                </div>
+
+
+                <form id="inputForm">
                     <label class="formLabel">
                         날짜
                         <input type="date" id="date" name="date">
                     </label>
 
-                    <label class="formLabel">
-                        유형
-                        <select id="type" name="type">
-                            <option value="expense">지출</option>
-                            <option value="income">수입</option>
-                        </select>
-                    </label>
+                    <div class="custom-dropdown">
+                        <div class="selected-item formLabel">유형</div>
+                        <ul class="dropdown-list">
+                            <li>지출 💸</li>
+                            <li>수입 💵</li>
+                        </ul>
+                    </div>
 
                     <label class="formLabel">
                         내용
-                        <input type="text" id="detail" name="detail">
+                        <input type="text" id="detail" name="detail" autocomplete="off">
                     </label>
 
                     <label class="formLabel">
                         금액
-                        <input type="number" id="amount" name="amount">
+                        <input type="number" id="amount" name="amount" autocomplete="off">
                     </label>
 
                     <input type="submit" value="등록" class="register-btn">
                 </form>
-            </div>
+
+            </div> <!-- .formArea -->
 
 
         </main> <!-- #mainWrapper -->
