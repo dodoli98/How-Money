@@ -124,7 +124,11 @@ input:checked+.slider:before {
 }
 
 .calendarWrapper {
-    background-color: lightblue;
+
+    /* background-color: rgb(143, 201, 242); */
+    /* background-color: rgb(137, 169, 245); */
+    background-color: rgb(245, 201, 169);
+    
 
     width: 70%;
 
@@ -135,7 +139,12 @@ input:checked+.slider:before {
 
 
 .formArea {
-    background-color: lightblue;
+    /* background-color: rgb(143, 201, 242); */
+    /* background-color: rgb(137, 169, 245); */
+    background-color: rgb(245, 201, 169);
+
+
+
     border-radius: 50px;
     box-sizing: border-box;
 
@@ -206,12 +215,23 @@ thead > tr {
     text-align: center;
 
     font-family: 'omyu_pretty';
+    margin-bottom: 0.6em;
 
+    border-bottom: 1px solid ;
+}
 
+thead > tr > th {
+    text-align: left;
 }
 
 .calendar th {
     width: calc(100% / 7); /* 요일이 7개이므로 100%를 7등분하여 각각의 너비를 계산합니다. */
+}
+
+#calendarBody > table > tbody > tr > td{
+    box-sizing: border-box;
+    font-size: 0.8em;
+    
 }
 
 
@@ -308,7 +328,7 @@ thead > tr {
     height: 40px;
     width: 80px;
     color: #fff;
-    background-color: #6A24FE;
+    background-color: rgb(186, 169, 232) ;
     border-radius: 15px;
 
     cursor: pointer;
@@ -348,6 +368,7 @@ thead > tr {
 
   .dropdown-list li {
     padding: 10px;
+    border-radius: 25px;
   }
 
   .dropdown-list li:hover {

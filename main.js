@@ -36,7 +36,7 @@ $(document).ready(function() {
         // 체크박스가 체크되었는지 여부를 확인합니다.
         if ($(this).is(':checked')) {
             // 체크되었을 때 body의 배경색을 검정으로 변경합니다.
-            $body.css('background-color', 'black');
+            $body.css('background-color', 'rgb(35,35,35)');
             console.log($logo);
             $logo.css('color', 'white');
         } else {
@@ -80,57 +80,52 @@ $(document).ready(function() {
     });
 });
 
-// 캘린더 
+// 캘린더 함수
 function displayCalendar(year, month) {
+    // 클리어 
+    // empty() 메서드로 태그는 유지한채로 내용을 삭제
+    $('#calendarBody').empty();
+
+    // 랜더 함수
+
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     
-    // 현재 달을 입력 
+    // 현재 달 입력 
     $('#currentMonth').text(monthNames[month] + ' ' + year );
 
+      // 날짜 표시
+      var firstDay = new Date(year, month, 1).getDay();
+      var lastDate = new Date(year, month + 1, 0).getDate();
+      
+      var table = '<table>';
+      table += '<tr>';
+      // for (var i = 0; i < monthDays.length; i++) {
+      //     table += '<th>' + monthDays[i] + '</th>';
+      // }
+      table += '</tr><tr>';
+      
+      var dayCount = 1;
+      for (var j = 0; j < 7; j++) {
+          for (var k = 0; k < 7; k++) {
+              if (j === 0 && k < firstDay) {
+                  table += '<td></td>';
+              } else if (dayCount > lastDate) {
+                  break;
+              } else {
+                  table += '<td>' + dayCount + '</td>';
+                  dayCount++;
+              }
+          }
+          if (dayCount > lastDate) {
+              break;
+          } else {
+              table += '</tr><tr>';
+          }
+      }
+      table += '</tr></table>';
+      
+      $('#calendarBody').append(table);
+
+
 }
 
-
-/*
-// 캘린더 표시 함수
-function displayCalendar(year, month) {
-    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    
-    // 헤더 업데이트
-    $('#currentMonthentMonth').html('<h2>' + monthNames[month] + ' ' + year + '</h2>');
-    
-    // 날짜 표시
-    var firstDay = new Date(year, month, 1).getDay();
-    var lastDate = new Date(year, month + 1, 0).getDate();
-    
-    var table = '<table>';
-    table += '<tr>';
-    // for (var i = 0; i < monthDays.length; i++) {
-    //     table += '<th>' + monthDays[i] + '</th>';
-    // }
-    table += '</tr><tr>';
-    
-    var dayCount = 1;
-    for (var j = 0; j < 7; j++) {
-        for (var k = 0; k < 7; k++) {
-            if (j === 0 && k < firstDay) {
-                table += '<td></td>';
-            } else if (dayCount > lastDate) {
-                break;
-            } else {
-                table += '<td>' + dayCount + '</td>';
-                dayCount++;
-            }
-        }
-        if (dayCount > lastDate) {
-            break;
-        } else {
-            table += '</tr><tr>';
-        }
-    }
-    table += '</tr></table>';
-    
-    $('#calendarBody').append(table);
-}
-
-
-*/
