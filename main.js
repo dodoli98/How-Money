@@ -1,31 +1,31 @@
-$(document).ready(function() {
- 
+$(document).ready(function () {
+
     // drop down ------------------------------------------------------------
-    
+
     $(function () {
         const selectedItem = $('.selected-item');
         const dropdownList = $('.dropdown-list');
-    
+
         selectedItem.on('click', function () {
             dropdownList.slideToggle(); // slideToggle 메서드를 사용하여 드롭다운을 부드럽게 열고 닫습니다.
         });
-    
+
         dropdownList.on('click', 'li', function (event) {
             selectedItem.removeClass('formLabel');
             selectedItem.text($(this).text());
             dropdownList.slideUp(); // 아이템을 클릭하면 드롭다운을 닫습니다.
         });
-    
+
         $(document).on('click', function (event) {
             if (!selectedItem.is(event.target) && !dropdownList.has(event.target).length) {
                 dropdownList.slideUp(); // 문서 어디를 클릭하든 드롭다운을 닫습니다.
             }
         });
     });
-    
-    
-    
-    
+
+
+
+
     // toggle button ------------------------------------------------------------
 
     const $toggle = $('#togglebtn');
@@ -55,12 +55,12 @@ $(document).ready(function() {
     var currentYear = currentDate.getFullYear();
     // 현재 월
     var currentMonth = currentDate.getMonth();
-    
+
     // 캘린더 표시 함수 호출
     displayCalendar(currentYear, currentMonth);
-    
+
     // 이전 달 버튼 클릭 이벤트
-    $('#prevMonth').on('click', function() {
+    $('#prevMonth').on('click', function () {
         currentMonth--;
         if (currentMonth < 0) {
             currentMonth = 11;
@@ -68,9 +68,9 @@ $(document).ready(function() {
         }
         displayCalendar(currentYear, currentMonth);
     });
-    
+
     // 다음 달 버튼 클릭 이벤트
-    $('#nextMonth').on('click', function() {
+    $('#nextMonth').on('click', function () {
         currentMonth++;
         if (currentMonth > 11) {
             currentMonth = 0;
@@ -78,7 +78,35 @@ $(document).ready(function() {
         }
         displayCalendar(currentYear, currentMonth);
     });
+
+
+    // 가계부 입력
+    // 해당 날짜를 클릭하면 날짜를 받아오고 
+    // form 에서 입력한 내용을 날짜칸에 저장
+    var $day = $('.calendarTable > tbody > tr > td');
+
+    $(document).on('click', '.calendarTable td', function () {
+        var year = $('#currentMonth').text().split(' ')[1]; // 현재 연도
+        var day = $(this).text(); // 클릭한 날짜
+        var currentMonth = $('#currentMonth').text().split(' ')[0];
+
+
+        // 현재 월 이름을 숫자로 변환
+        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var currentMonthIndex = monthNames.indexOf(currentMonth) + 1;
+
+        // 날짜를 yyyy-mm-dd 형식으로 변환
+        var selectedDate = year + '-' + (currentMonthIndex < 10 ? '0' + currentMonthIndex : currentMonthIndex) + '-' + (day.length === 1 ? '0' + day : day);
+
+        // 입력란에 선택된 날짜 설정
+        $('#date').val(selectedDate);
+    });
 });
+
+
+
+
+
 
 // 캘린더 함수
 function displayCalendar(year, month) {
@@ -89,42 +117,43 @@ function displayCalendar(year, month) {
     // 랜더 함수
 
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    
-    // 현재 달 입력 
-    $('#currentMonth').text(monthNames[month] + ' ' + year );
 
-      // 날짜 표시
-      var firstDay = new Date(year, month, 1).getDay();
-      var lastDate = new Date(year, month + 1, 0).getDate();
-      
-      var table = '<table>';
-      table += '<tr>';
-      // for (var i = 0; i < monthDays.length; i++) {
-      //     table += '<th>' + monthDays[i] + '</th>';
-      // }
-      table += '</tr><tr>';
-      
-      var dayCount = 1;
-      for (var j = 0; j < 7; j++) {
-          for (var k = 0; k < 7; k++) {
-              if (j === 0 && k < firstDay) {
-                  table += '<td></td>';
-              } else if (dayCount > lastDate) {
-                  break;
-              } else {
-                  table += '<td>' + dayCount + '</td>';
-                  dayCount++;
-              }
-          }
-          if (dayCount > lastDate) {
-              break;
-          } else {
-              table += '</tr><tr>';
-          }
-      }
-      table += '</tr></table>';
-      
-      $('#calendarBody').append(table);
+    // 현재 달 입력 
+    $('#currentMonth').text(monthNames[month] + ' ' + year);
+
+    // 날짜 표시
+    var firstDay = new Date(year, month, 1).getDay();
+    var lastDate = new Date(year, month + 1, 0).getDate();
+
+    var table = '<table class="calendarTable">';
+
+    table += '<tr>';
+    // for (var i = 0; i < monthDays.length; i++) {
+    //     table += '<th>' + monthDays[i] + '</th>';
+    // }
+    table += '</tr><tr>';
+
+    var dayCount = 1;
+    for (var j = 0; j < 7; j++) {
+        for (var k = 0; k < 7; k++) {
+            if (j === 0 && k < firstDay) {
+                table += '<td></td>';
+            } else if (dayCount > lastDate) {
+                break;
+            } else {
+                table += '<td>' + dayCount + '</td>';
+                dayCount++;
+            }
+        }
+        if (dayCount > lastDate) {
+            break;
+        } else {
+            table += '</tr><tr>';
+        }
+    }
+    table += '</tr></table>';
+
+    $('#calendarBody').append(table);
 
 
 }

@@ -228,13 +228,16 @@ thead > tr > th {
     width: calc(100% / 7); /* 요일이 7개이므로 100%를 7등분하여 각각의 너비를 계산합니다. */
 }
 
-#calendarBody > table > tbody > tr > td{
+.calendarTable > tbody > tr > td{
     box-sizing: border-box;
     font-size: 0.8em;
     
+    cursor: pointer;
 }
 
-
+.calendarTable > tbody > tr > td:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
 
 
 
