@@ -80,7 +80,8 @@ $(document).ready(function () {
     });
 
 
-    // 가계부 입력
+    // 날짜 클릭 
+    // 캘린더 -> 폼
     // 해당 날짜를 클릭하면 날짜를 받아오고 
     // form 에서 입력한 내용을 날짜칸에 저장
     var $day = $('.calendarTable > tbody > tr > td');
@@ -101,6 +102,47 @@ $(document).ready(function () {
         // 입력란에 선택된 날짜 설정
         $('#date').val(selectedDate);
     });
+
+   
+
+
+
+    // 등록
+    $('.register-btn').click(function(event) {
+        event.preventDefault(); // 기본 동작 중지
+
+        // 입력된 정보 가져오기
+        var date = $('#date').val();
+        var type = $('.selected-item').text();
+        var detail = $('#detail').val();
+        var amount = $('#amount').val();
+
+        // 데이터 유효성 검사 - 필요에 따라 구현하세요
+
+        // 객체 형태로 데이터 구성
+        var entry = {
+            'date': date,
+            'type': type,
+            'detail': detail,
+            'amount': amount
+        };
+
+        // 로컬 스토리지에 저장
+        var entries = JSON.parse(localStorage.getItem('entries')) || []; // 저장된 엔트리 가져오기 또는 빈 배열
+        entries.push(entry); // 새 엔트리 추가
+        localStorage.setItem('entries', JSON.stringify(entries)); // 업데이트된 엔트리 저장
+
+        // 입력 폼 초기화
+        $('#date').val('');
+        $('.selected-item').text('유형');
+        $('#detail').val('');
+        $('#amount').val('');
+
+        // 등록 완료 메시지를 출력하거나 다른 동작을 수행할 수 있습니다.
+        alert('등록되었습니다.');
+    });
+
+
 });
 
 
